@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package RPCserver;
+
+service ServerInterface {
+    rpc TestStatus (PingRequest) returns (PongReply) {}
+    rpc ImageStore (UploadRequest) returns (ResultReply) {}
+}
+
+message PingRequest{
+}
+
+message PongReply{
+    string pong = 1;
+}
+
+message UploadRequest {
+    bytes binary = 1;
+    string uuid = 2;
+    string timestamp = 3;
+}
+
+message ResultReply {
+    string message = 1;
+}
