@@ -8,6 +8,8 @@
 
 * [搜狗微信基于关键词爬取相关微信公众号文章](./wechat_spider)
 
+* [一个`CS`架构的分布式爬虫例子](./distributed_web_spider_demo)
+
 ## `Web`开发相关
 
 * [`Flask`实现`api token`](./redis_token)
