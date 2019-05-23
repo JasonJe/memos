@@ -14,6 +14,8 @@
 
 * [`Flask`实现`api token`](./redis_token)
 
+* [基于`Potree`的`3D`点云模型展示](./cloud_point)
+
 ## 机器学习相关
 
 * [多路摄像头目标检测服务](./multi_camera_object_detection)
