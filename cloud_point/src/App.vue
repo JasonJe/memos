@@ -1,16 +1,42 @@
 <template>
   <div id="app">
-    <cloud-point/>
+    <div class="toolbar" v-show="isToolBarShow">
+      <input v-model="cloudjs" placeholder="点云源数据文件">
+      <input v-model="url" placeholder="点云文件地址">
+      <button :disabled="isButtonDisabled" @click="showCloudPoint()">确定</button>
+    </div>
+    <cloud-point v-if="isCloudPointShow" :cloudjs="cloudjs" :url="url"/>
   </div>
 </template>
 
 <script>
-import CloudPoint from './components/CloudPoint.vue'
-
 export default {
   name: 'app',
+  data() {
+    return {
+      cloudjs: "",
+      url: "",
+      isCloudPointShow: false,
+      isToolBarShow: true,
+      isButtonDisabled: true
+    }
+  },
   components: {
-    CloudPoint
+    CloudPoint: () => 
+              import ('./components/CloudPoint.vue')
+  },
+  methods: {
+    showCloudPoint() {
+      this.isCloudPointShow = true
+      this.isToolBarShow = false 
+    }
+  },
+  updated() {
+    if (this.cloudjs != "" && this.url != "") {
+      this.isButtonDisabled = false
+    } else {
+      this.isButtonDisabled = true
+    }
   }
 }
 </script>

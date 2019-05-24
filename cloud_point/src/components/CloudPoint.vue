@@ -11,14 +11,18 @@ import { OrbitControls } from '../script/orbitControls';
 import { fitCameraToPCO } from '../script/fitCameraToPCO';
 
 export default {
+    props: {
+        cloudjs: {
+            type: String,
+            default: 'cloud.js'
+        },
+        url: {
+            type: String,
+            default: ''
+        }
+    },
     data() {
       return {
-        serverConfig: {
-            cloudjs: 'cloud.js',
-            makeURL(path) {
-              return `http://localhost:8000/resources/pointclouds/pontto/${path}`;
-            },
-        },
         targetID: 'target',
         renderer: new THREE.WebGLRenderer(),
         potree: new threePotree.Potree(),
@@ -36,6 +40,9 @@ export default {
         this.loadPOC()
     },
     methods: {
+        makeURL(path) {
+            return `${this.url}/${path}`;
+        },
         loadPOC() {
             const el = document.getElementById(this.targetID);
 
@@ -57,7 +64,7 @@ export default {
 
             el.appendChild(this.renderer.domElement);
 
-            this.potree.loadPointCloud(this.serverConfig.cloudjs, this.serverConfig.makeURL).then(pco => {
+            this.potree.loadPointCloud(this.cloudjs, this.makeURL).then(pco => {
                 this.pco = pco
                 this.pco.position.set(0, 0, 0);
                 this.pco.material.size = this.materialSize;
@@ -75,9 +82,9 @@ export default {
 
                 requestAnimationFrame(this.initRender);
             })
-            .catch((err) => {
-                window.console.error(err);
-            });
+            // .catch((err) => {
+            //     window.console.error(err);
+            // });
         },
         initRender() {
             requestAnimationFrame(this.initRender);

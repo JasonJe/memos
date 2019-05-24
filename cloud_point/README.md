@@ -16,13 +16,8 @@ yarn run serve
 
 1. 点云数据生成[Potree Converter](https://github.com/potree/PotreeConverter)；
 
-2. 配置载入数据文件参数
+2. 浏览器访问`http://localhost:8080`
 
-```
-serverConfig: {
-    cloudjs: 'cloud.js', # 点云源数据文件
-    makeURL(path) {
-        return `http://localhost:8000/resources/pointclouds/pontto/${path}`; # 点云文件地址
-    },
-}
-```
+* 效果
+
+![效果](./demo.png)
