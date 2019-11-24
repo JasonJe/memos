@@ -20,6 +20,8 @@
 
 * [基于`Potree`的`3D`点云模型展示](./cloud_point)
 
+* [`Go`实现一个即开即用的文件服务](./simple_file_server)
+
 ## 数据分析相关
 
 * [拉勾爬取并可视化](./jobs_data_analysis)
