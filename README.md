@@ -4,6 +4,8 @@
 
 * [`Go by Example` 练习](./go_example)
 
+* [`SnowFlake` 算法实现](./snow_flake)
+
 ## 爬虫相关
 
 * [离线瓦片地图](./offline_tileserver)
